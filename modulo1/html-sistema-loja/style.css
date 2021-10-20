@@ -1,0 +1,77 @@
+#cabecalho{
+    background-color: rgb(132, 144, 145);
+}
+
+
+
+#tema{
+   
+    color:rgb(66, 65, 65);
+    margin: 1px;
+    padding: 1px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+
+
+}
+#sub-tema{
+    color:rgb(66, 65, 65);
+    margin: 5px;
+    padding: 1px;
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    width: 150px;
+
+}
+
+#imagens-home{
+    margin: 10px;
+    width: 130px;
+    justify-content: center;
+    padding: 2px;
+}
+
+#rodape{
+    color:rgb(66, 65, 65);
+    background-color: rgb(132, 144, 145);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+#botao-hcabecalho{
+    color:rgb(66, 65, 65);
+    margin: 4px;
+    
+}
+
+#grupo-botao{
+    color:rgb(66, 65, 65);
+    display: flex;
+    justify-content: center;
+    padding: 2px;
+    
+}
+#imagens-estoque{
+    margin: 10px;
+    width: 130px;
+    justify-content: center;
+    padding: 2px;
+}
+#tabela-estoque{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+th{
+    background-color: yellow;
+}
+td{
+    background-color: turquoise;
+    
+    
+}
