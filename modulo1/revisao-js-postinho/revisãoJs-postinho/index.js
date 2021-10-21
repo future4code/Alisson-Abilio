@@ -64,18 +64,27 @@ console.log(verificaSeEMaior(321, 2156));
 // Exercício 3------------------------------------------------------------------------------------
 
 
-const cadastro = (nome, ano, senha,  nasc, ) => {
+const cadastro = () => {
 
-    const usuario = []
-
-if(nome !=="" && ano > 2003 && senha !== "" && nasc === "brasileiro")
-{
-    usuario.unshift(nome, ano, senha, nasc)
-}
+    const usuarios = []
     
+    const usuario = {
+        nome: "alisson",
+        idade: 20,
+        senha: "123456",
+        nascionalidade: "brasileira"
 
 }
-console.log(cadastro("alisson", 2005, "451214", "brasileiro"));
+
+if( usuario.idade > 18 && usuario.senha.length >= 6 && usuario.nascionalidade === "brasileira")
+{
+    usuarios.push(usuario)
+}
+
+return usuarios
+
+}
+console.log(cadastro());
 
 
 // NÃO SEI COMO DEIXAR A SENHA DA FORMA CERTA.
@@ -85,19 +94,53 @@ console.log(cadastro("alisson", 2005, "451214", "brasileiro"));
 
 const login = () => {
     const login = "labenu"
-    //  Sua lógica aqui
-
+    if( login === "labenu"){
+        console.log("Usuário logado")
+    }
+    if (login !== "labenu"){
+        console.log("Senha inválida")
+    }
 }
 
 console.log(login());
+
+
+
 
 // Exercício 5----------------------------------------------------------------------------------------------------
 
 const primeiraDose = () => {
 
+    let tempo, data = new Date()
+    
     //  Sua lógica aqui
+   // Coronavac = 28 dias
+   //Astrazenica = 90 dias
+    const nome = "Alisson"
+    const vacina = "pfizer"
+
+    if(vacina.toLocaleLowerCase() === "coronavac"){
+        tempo = 28 
+    }
+    else if(vacina.toLocaleLowerCase()=== "astrazenic"){
+        tempo = 60
+    }
+    else if(vacina.toLocaleLowerCase()=== "pfizer"){
+        tempo = 90
+    }
+    
+
+    const milissegundos1dia = 86400000
+
+    const hoje =data.getTime()
+
+    const dataAtualizada = new Date(hoje + (tempo*milissegundos1dia))
+
+    const dataFormatada = dataAtualizada.toLocaleDateString("pt-br")
 
 
+  return `Olá ${nome}! A próxima dose da ${vacina} é daqui a 
+    ${tempo} dias. Compareça no posto na data ${data}.`
 }
 console.log(primeiraDose())
 
@@ -113,9 +156,12 @@ const segundaDose = (nomeDoUsuario) => {
         { nome: "Carlos", imunizacao: "incompleta" }
     ]
 
-    //  Sua lógica aqui
+    if(usuarios.nome === "Barbara") {
+        
 
+    }
 
+ return usuarios
 }
 console.log(segundaDose("Barbara"));
 
