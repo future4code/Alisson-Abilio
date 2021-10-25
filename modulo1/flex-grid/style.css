@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    height:30px;
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+    background-color: mediumvioletred;
+    padding: 4px;
+}
+
+h4{
+    align-items: flex-end;
+}
+
+button{
+    height: 20px;
+    width: 40px;
+    
+}
+#container-centro{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    
+}
+footer{
+    height: 30px;
+    background-color: mediumvioletred;
+    text-align: center;
+
+}
+
+#pai{
+height:100vh ;
+display: grid;
+grid-template-rows: 1fr 16fr 1fr;
+}
+
+nav{
+    border: 1px solid black;   
+    
+}
+.bolo-chocolate{
+    height: 150px;
+    width: 120px;
+}
+
+#imagens-bolo{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+}
+
+#home{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #f2d0e0;
+    
+}
+
+img{
+    height: 20px;
+    width: 15px;
+}
+
+.bolos{
+    display: grid;
+    text-align: center;
+    margin: 3px;
+    padding: 2px;
+    box-shadow: 1px 1px darkgray;
+}
+
+.descricao-bolo{
+    font-size: 10px;
+    margin-bottom: 4px;
+
+}
+
+.descricao-bolo1{
+    font-size: 7px;
+}
+
+#bolinho{
+    padding: 3px;
+
+    
+}
+
+#botao-home{
+    background-color: chartreuse;
+    border: 1px solid black;
+
+}
