@@ -1,10 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-
 import {IconeComContador} from '../IconeComContador/IconeComContador'
-
 import iconeCoracaoBranco from '../../img/favorite-white.svg'
-import iconeCoracaoPreto from '../../img/favorite.svg'
+import iconeCoracaoPreto from '../../img/coracao.png'
 import iconeComentario from '../../img/comment_icon.svg'
 import {SecaoComentario} from '../SecaoComentario/SecaoComentario'
 
@@ -40,6 +38,13 @@ const PostPhoto = styled.img`
   width: 100%;
 `
 
+
+
+
+////-----------------------------------
+
+
+
 class Post extends React.Component {
   state = {
     curtido: false,
@@ -50,10 +55,9 @@ class Post extends React.Component {
 
   onClickCurtida = () => {
     this.setState({
-      curtido: !this.state.curtido,
-      numeroCurtidas: this.state.numeroCurtidas +1
+      numeroCurtidas: this.state.numeroCurtidas + 1
     })
-    console.log('Curtiu!')
+  
   }
 
   onClickComentario = () => {
@@ -93,7 +97,6 @@ class Post extends React.Component {
       <PostPhoto src={this.props.fotoPost} alt={'Imagem do post'}/>
 
       <PostFooter>
-        
         <IconeComContador
           icone={iconeCurtida}
           onClickIcone={this.onClickCurtida}

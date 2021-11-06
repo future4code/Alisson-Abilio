@@ -1,9 +1,12 @@
 import React from 'react';
 import styled from 'styled-components'
 import Post from './components/Post/Post';
-import img from './img/img.jpg'
-import img1 from './img/img1.jpg'
-import img2 from './img/img2.jpg'
+import alisson from "./img/alisson.jpg";
+import alisson1 from "./img/alisson-natan.jpg"
+import alisson2 from "./img/familia.jpg"
+import alisson3 from "./img/marilia.jpg"
+import alisson4 from "./img/marilia-alisson.jpg"
+import alisson5 from "./img/natan.jpg"
 
 const MainContainer = styled.div`
   display: flex;
@@ -17,21 +20,21 @@ class App extends React.Component {
     return (
       <MainContainer>
         <Post
-          nomeUsuario={'paulinha'}
-          fotoUsuario={'https://picsum.photos/50/50'}
-          fotoPost={'https://picsum.photos/200/150'}
-        />
-
-        <Post
           nomeUsuario={'alisson_abilio'}
-          fotoUsuario={img1}
-          fotoPost={img2}
+          fotoUsuario={alisson}
+          fotoPost={alisson2}
         />
 
         <Post
           nomeUsuario={'marilia_meire'}
-          fotoUsuario={img}
-          fotoPost={img2}
+          fotoUsuario={alisson3}
+          fotoPost={alisson4}
+        />
+
+        <Post
+          nomeUsuario={'natan_abilio'}
+          fotoUsuario={alisson5}
+          fotoPost={alisson1}
         />
       </MainContainer>
     );
