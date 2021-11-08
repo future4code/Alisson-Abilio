@@ -47,7 +47,7 @@ const PostPhoto = styled.img`
 
 class Post extends React.Component {
   state = {
-    curtido: false,
+    curtido: true,
     numeroCurtidas: 0,
     comentando: false,
     numeroComentarios: 0
@@ -55,7 +55,15 @@ class Post extends React.Component {
 
   onClickCurtida = () => {
     this.setState({
+      
       numeroCurtidas: this.state.numeroCurtidas + 1
+      
+      
+      
+
+
+      
+
     })
   
   }
@@ -74,9 +82,9 @@ class Post extends React.Component {
   }
 
   render() {
-    let iconeCurtida
+    let iconeCurtida 
 
-    if(this.state.curtido) {
+    if(this.setState.curtido) {
       iconeCurtida = iconeCoracaoPreto
     } else {
       iconeCurtida = iconeCoracaoBranco
