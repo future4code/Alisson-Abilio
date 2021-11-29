@@ -20,10 +20,10 @@ margin: 10px;
 
 button{
     display: grid;
-    width: 150px;
-    height: 40px;
+    width: 100px;
+    height: 30px;
     margin: 10px;
-    font-size: 30px;
+    font-size: 15px;
 }
 `
 const Containerinformação = styled.div`
@@ -44,7 +44,7 @@ const ContainerCentral = styled.div`
 const Containeradicionar = styled.div`
  display: grid;
 border: 2px solid red;
-width: 50%;
+width: 40%;
 height: 500px;
 padding: 10px;
 margin: 10px;
@@ -80,9 +80,9 @@ class Home extends React.Component{
     state = {
         playList: [],
         inputPlaylist:'',
-        playlistHits: '',
-        playlistOnnowID:'',
-        playlistOnnowID:'',
+        playlistMusicas: [],
+        id:''
+       
     }
 
 
@@ -118,8 +118,30 @@ class Home extends React.Component{
         
     }
 
-    getPlaylistTracks = (id, name) => {
-const url =`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/070a4fb6-d0bc-4d5e-b29f-2b39cf832492/tracks`
+    mostrarId = (id) => {
+        axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/`,
+        {
+            headers: {
+                Authorization: "alisson-abilio-carver"
+            }
+        }
+       ).then((res) => {
+           console.log("aqui id", res)
+           
+        }
+        ).catch((err) => {
+           console.log('aqui', err)
+          
+          
+       })
+        
+    }
+
+
+
+
+    getPlaylistTracks = (id) => {
+const url =`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${id}/tracks`
         axios.get(url,{
             headers: {
             Authorization: "alisson-abilio-carver"
@@ -129,7 +151,7 @@ const url =`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/
             this.setState({playlistHits: res.data.result.tracks})
             this.setState({playlistOnnowID: id})
             console.log("aqui o id",id)
-            this.setState({playlistOnnowID: name})
+            this.setState({playlistOnnowID: id})
            console.log("aqui o nome", res.data)
         }).catch((err) => {
             console.log( "eeerrado", err.response)
@@ -149,39 +171,45 @@ const url =`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/
             }
         }
         ).then((res) =>{
-            alert("a play liste  foi criada com sucesso")
+            alert("Playlist  foi criada com sucesso")
             this.getAllPlaylists()
             this.setState({inputPlaylist: ""})
         }).catch((err)=>{
-            alert("acho que a playlist já existe!")
+            alert("Playlist já existe!")
         })
     }
 
+    // _________________________________________________
+
+   
+
 
   render(){
-     const mostrasPlayList = this.state.playList.map((item) =>{
+
+
+     const mostrasPlayList = this.state.playList.map((item) =>
+     {
         
          return(
-     <button> {item.name}</button>
+     <button onClick={() => this.mostrarId(item.id)}>
+         {item.name}</button>
+     
      )
      } )
      
-     const mostrasMusicas = this.state.playList.map((item) =>{
-         return(
-     <button> {item.id}</button>
-     )
-     } )
+     
      
 
 
     return(
        
-       <div>
+            <div>
 
             <ContanerGeneral>
              <h1>Home</h1>
              <button onClick={this.props.irParaplay}>aqui vc vai para tela play</button>
             </ContanerGeneral>
+
             <ContainerCentral>
             <ContainerDeButton>
               <h3>playlists</h3>  
@@ -190,23 +218,22 @@ const url =`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/
               </div>
             </ContainerDeButton>
 
-                <Containeradicionar>
-                    <ContainerAddPlayList>
+         <Containeradicionar>
+
+                 <ContainerAddPlayList>
                 <h3>Adicionar playList </h3>
                 <box>
                 <input 
                 placeholder={"play list"}
                 value={this.state.inputPlaylist}
-                onChange={this.pegarInputPlayList}
-                >
-
+                onChange={this.pegarInputPlayList}>
                 </input>
                 <button onClick= {this.createPlaylist}>criar play list</button>
                 </box>
-                  </ContainerAddPlayList>
+                </ContainerAddPlayList>
+
                   <ContainerAddMusicas>
                   <h3>Adicionar musicas </h3>
-
                   <>nome:</>
                   <input
                   ></input>
@@ -216,21 +243,25 @@ const url =`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/
                   <br/>
                   <>url:</>
                   <input></input>
-                      
-
                   </ContainerAddMusicas>
-                </Containeradicionar>
+
+
+        </Containeradicionar>
+
 
             <Containerinformação>
                 <h3>Musicas</h3>
                 <div>
-              {mostrasMusicas}
-              </div>
 
-                <button onClick={this.getPlaylistTracks} ></button>
+                <mostrasId/>
+        
+              </div>
+                
+                <button></button>
             </Containerinformação>
 
-        </ContainerCentral>
+</ContainerCentral>
+        
         </div>
 
      )
