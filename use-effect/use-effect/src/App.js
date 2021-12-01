@@ -14,6 +14,10 @@ const App = ()=>{
   // };
   const [pokelist, setPokelist] = useState([])
   const [pokeName, setPokeName] = useState()
+  
+  useEffect (()=> {
+    pegarlista()
+  },[])
 
   // método que roda após a montagem do componente
   // componentDidMount = () => {
@@ -35,6 +39,11 @@ const App = ()=>{
 
    
     return (
+
+      
+
+
+
       <div className="App">
         {/* evento onChange chama função toda vez que o usuário 
         escolhe um novo pokemon no dropdown */}
