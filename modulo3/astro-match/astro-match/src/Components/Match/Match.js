@@ -11,13 +11,9 @@ function Metch() {
       )
       .then((res) => {
         setMatchMutuo(res.data.matches);
-       
       })
-      .catch((err) => {
-       
-      });
+      .catch((err) => {});
   };
-
 
   useEffect(() => {
     GetMatches();

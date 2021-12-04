@@ -12,10 +12,7 @@ function App(props) {
   // },[])
 
   const TrocarDeTelaHome = () => {
-    setTela(<Match
-      trocarDeTelaHome={()=>TrocarDeTelaHome()}
-      
-      />);
+    setTela(<Match trocarDeTelaHome={() => TrocarDeTelaHome()} />);
   };
 
   const TrocarDeTelaMatch = () => {
@@ -25,9 +22,7 @@ function App(props) {
   return (
     <div>
       {tela}
-      <button onClick={TrocarDeTelaMatch}>home
-      
-      </button>
+      <button onClick={TrocarDeTelaMatch}>home</button>
       <button onClick={TrocarDeTelaHome}>match</button>
     </div>
   );

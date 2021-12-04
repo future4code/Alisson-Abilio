@@ -12,6 +12,8 @@ function Home(props) {
     GetProfileToChoose();
   }, [continuar]);
 
+  // Funcäo para trocar de cards
+
   const proximoPerfil = () => {
     console.log("aqui é uma props", props);
     setContinuar(continuar + 1);
