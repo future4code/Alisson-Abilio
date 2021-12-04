@@ -1,55 +1,39 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Header } from "../Home/sytled";
 
 function Metch() {
-  const [metchMutuo, setMetchMutuo] = useState([])
+  const [matchmutuo, setMatchMutuo] = useState([]);
 
   const GetMatches = () => {
     axios
-      .get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/alisson-abilio-carver/matches")
+      .get(
+        "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/alisson-carver/matches"
+      )
       .then((res) => {
-        setMetchMutuo(res.data.matches);
-        console.log(res.data);
+        setMatchMutuo(res.data.matches);
+       
       })
       .catch((err) => {
-        console.log(err);
+       
       });
-  }
+  };
 
 
-  const ChoosePerson = () =>({
-    axios.post(`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/alisson-abilio-carver/choose-person`)
+  useEffect(() => {
+    GetMatches();
+  }, []);
 
-    }
-  )
-
-
-
-
-
-  useEffect(()=>{
-   GetMatches()
-  },[])
   return (
     <div>
-      {
-
-      metchMutuo.map((metch) => {
-        return(
-          <div>
-
-          <p> id:{metch.id}</p>
-          <p> nome:{metch.name}</p>
-          </div>
-        )
-      })
-    }
-      <button onClick={GetMatches}>deram match</button>
-     
-     
+      <h1>Quem deu Match</h1>
+      {matchmutuo.map((item) => {
+        return (
+          <lo>
+            <li>{item.name}</li>
+          </lo>
+        );
+      })}
     </div>
   );
 }
-
 export default Metch;

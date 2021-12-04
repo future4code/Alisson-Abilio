@@ -39,8 +39,10 @@ justify-content: center;
 `
 export const BoxButoon = styled.div`
 display: flex;
-justify-content: center;
 padding: 5px;
+align-content: space-between;
+border: 2px solid black;
+display: flex;
 
 
 

@@ -1,39 +1,36 @@
-
-import {useState, useEffect} from "react"
+import { useState } from "react";
 import Home from "./Components/Home/Home";
 import Match from "./Components/Match/Match";
+import React from "react";
 
-
-
-function App() {
-const [tela, setTela] = useState()
-const [telaNova, setTelaNova] = useState()
+function App(props) {
+  const [tela, setTela] = useState();
+  // const [telaNova, setTelaNova] = useState()
 
   // useState(()=>{
   //   setTela(<Home irParaOMatch={trocarDeTelaHome()}/>)
   // },[])
 
+  const TrocarDeTelaHome = () => {
+    setTela(<Match
+      trocarDeTelaHome={()=>TrocarDeTelaHome()}
+      
+      />);
+  };
 
-  const trocarDeTelaHome = ()=>{
-    setTela( <Match/>)
-  }
+  const TrocarDeTelaMatch = () => {
+    setTela(<Home />);
+  };
 
-  const trocarDeTelaMatch = ()=>{
-    setTela(
-      <Home/>)
-  }
-  
   return (
     <div>
-    {tela}
-    <button onClick={trocarDeTelaMatch}>home</button>
-    <button onClick={trocarDeTelaHome}>match</button>
+      {tela}
+      <button onClick={TrocarDeTelaMatch}>home
+      
+      </button>
+      <button onClick={TrocarDeTelaHome}>match</button>
     </div>
-    
   );
 }
 
 export default App;
-
-
-
