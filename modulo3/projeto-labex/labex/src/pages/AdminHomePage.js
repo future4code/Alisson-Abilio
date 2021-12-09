@@ -1,15 +1,21 @@
-import axios, { Axios } from "axios";
-import { useEffect, useState } from "react";
-import { StyledComponent } from "styled-components";
+import React from "react";
+import { useHistory } from "react-router-dom";
 
+export function AdminHomePage() {
+  const history = useHistory()
 
-function AdiminHomePage () {
-    return (
-      <div>
-       AdiminHomePage
-      </div>
-    );
+  const goHome = () => {
+    history.push("/")
   }
-  
-  export default AdiminHomePage;
-  
+
+  return (
+    <div>
+    AdminHomePage
+    <button onClick={goHome}>Home</button>
+    <button onClick={goHome}>Create Tryp</button>
+    <button onClick={goHome}>Details Tryp </button>
+    </div>
+  )
+}
+
+

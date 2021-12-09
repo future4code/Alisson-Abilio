@@ -1,15 +1,25 @@
-import axios, { Axios } from "axios";
-import { useEffect, useState } from "react";
-import { StyledComponent } from "styled-components";
+import React from "react";
+import { useHistory } from "react-router-dom";
 
+export function LoginPage() {
+  const history = useHistory();
 
-function LoginPage() {
-    return (
+  const goHomer = () => {
+    history.push("/");
+  };
+
+  const goAdmHome = () => {
+    history.push("/adimim");
+  };
+  return (
+    <div className="App">
+      loginPage
+      <button onClick={goHomer}>voltar</button>
+      <button onClick={goAdmHome}>admHome</button>
       <div>
-       LoginPage
+        <input type="email" value={""}></input>
+        <input type="password" value={""}></input>
       </div>
-    );
-  }
-  
-  export default LoginPage;
-  
+    </div>
+  );
+}

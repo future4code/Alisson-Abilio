@@ -1,15 +1,22 @@
-import axios, { Axios } from "axios";
-import { useEffect, useState } from "react";
-import { StyledComponent } from "styled-components";
+import React from "react";
+import { useHistory } from "react-router-dom";
 
+export function ListTripsPage() {
+  const history = useHistory();
 
-function ListTripsPage() {
-    return (
-      <div>
-       ListTripsPage
-      </div>
-    );
-  }
   
-  export default ListTripsPage;
-  
+  const gotHome = () => {
+    history.goBack() 
+  };
+  const goHome = () => {
+    history.push("/") 
+  };
+
+  return (
+    <div>
+      ListTripsPage
+      <button onClick={gotHome}>Voltar</button>
+      <button onClick={goHome}>home</button>
+    </div>
+  );
+}

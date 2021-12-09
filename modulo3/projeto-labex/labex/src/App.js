@@ -1,29 +1,47 @@
-import axios, { Axios } from "axios";
-import { useEffect, useState } from "react";
-import { StyledComponent } from "styled-components";
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import AdiminHomePage from "./pages/AdminHomePage";
-import ApplicationFormPage from "./pages/ApplicationFormPage";
-import CreateTripPage from "./pages/CreateTripPage";
-import HomePage from "./pages/HomePage";
-import ListTripsPage from "./pages/ListTripsPage";
-import LoginPage from "./pages/LoginPage";
-import TripDetailsPage from "./pages/TripDetailsPage";
+import { AdminHomePage } from './pages/AdminHomePage';
+import { ApplicationFormPage } from './pages/ApplicationFormPage';
+import { CreateTripPage } from './pages/CreateTripPage';
+import { HomePage } from './pages/HomePage';
+import { ListTripsPage } from './pages/ListTripsPage';
+import { LoginPage } from './pages/LoginPage';
+import { TripDetaislsPage } from './pages/TripDetailsPage';
 
-
-
-function App() {
+export default function App() {
   return (
-    <div>
-     <AdiminHomePage/>
-     <ApplicationFormPage/>
-     <CreateTripPage/>
-     <HomePage/>
-     <ListTripsPage/>
-     <LoginPage/>
-     <TripDetailsPage/>
-    </div>
-  );
-}
+    <BrowserRouter>
+    <Switch>
+  
 
-export default App;
+      <Route exact path={"/"}>
+        <HomePage />
+      </Route>
+
+      <Route exact path={"/adimim"}>
+        <AdminHomePage/>
+      </Route>
+
+      <Route exact path={"/application"}>
+        <ApplicationFormPage/>
+      </Route>
+
+      <Route exact path={"/create"}>
+        <CreateTripPage/>
+      </Route>
+
+      <Route exact path={"/list"}>
+        <ListTripsPage />
+      </Route>
+
+      <Route exact path={"/login"}>
+        <LoginPage />
+      </Route>
+
+      <Route exact path={"/trip"}>
+        <TripDetaislsPage/>
+      </Route>
+    </Switch>
+  </BrowserRouter>
+  )
+}
