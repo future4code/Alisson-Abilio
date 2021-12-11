@@ -12,13 +12,17 @@ export function LoginPage() {
     history.push("/adimim");
   };
   return (
-    <div className="App">
+    <div>
       loginPage
       <button onClick={goHomer}>voltar</button>
       <button onClick={goAdmHome}>admHome</button>
       <div>
-        <input type="email" value={""}></input>
-        <input type="password" value={""}></input>
+       <br></br>
+       <br></br>
+        <input type="email" placeholder="E-mail" value={""}></input>
+       <br></br>
+       <br></br>
+        <input type="password" placeholder="Senha" value={""}></input>
       </div>
     </div>
   );

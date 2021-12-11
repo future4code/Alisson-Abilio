@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router";
+import { ContainerHome, ContainerHomeGeneral } from "./styled";
 
 export function HomePage() {
   const history = useHistory()
@@ -12,10 +13,14 @@ export function HomePage() {
     history.push("/login")
     }
   return (
-    <div >
-    HomePage
-    <button onClick={gotList}>List</button>
-    <button onClick={goLogin}>Login</button>
+    <div>
+    <ContainerHomeGeneral>
+    <h1>Labex</h1>
+    </ContainerHomeGeneral>
+    <ContainerHome >
+    <button onClick={gotList}>Ver Viagens</button>
+    <button onClick={goLogin}>Área Adimin</button>
+    </ContainerHome>
     </div>
   );
 }
