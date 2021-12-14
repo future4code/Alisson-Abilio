@@ -1,4 +1,5 @@
 import React from "react"
+import { Router } from "react-router-dom";
 import AddRecipesPage from "./pages/AddRecipesPage/AddRecipesPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RecipeDetailPage from "./pages/RecipeDetailPage/RecipeDetailPage";
@@ -8,11 +9,7 @@ import SignUpPage from "./pages/SignUpPage/SignUpPage";
 function App() {
   return (
     <div >
-      <AddRecipesPage/>
-      <LoginPage/>  
-      <RecipeDetailPage/>
-      <RecipesListPage/>
-      <SignUpPage/>
+     <Router/>
       
     </div>
   );
