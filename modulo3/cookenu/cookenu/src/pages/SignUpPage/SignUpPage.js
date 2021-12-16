@@ -1,8 +1,14 @@
 import React from "react";
-
-const SignUpPage =() =>{
-    return(
-        <h1>SignUpPage</h1>
-    )
-}
-export default SignUpPage
+import {LogoImage, ScreenContainer, SignUpButtonContainer } from "./styled";
+import logo from "../../assets/logoin.jpg";
+import Button from "@material-ui/core/Button";
+import SignForm from "./SignForm"
+const LoginPage = () => {
+  return (
+    <ScreenContainer>
+      <LogoImage src={logo} />
+      <SignForm/>
+    </ScreenContainer>
+  );
+};
+export default LoginPage;

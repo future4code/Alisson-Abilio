@@ -8,23 +8,23 @@ import LoginPage from "../pages/LoginPage/LoginPage";
 import RecipeDetailPage from "../pages/RecipeDetailPage/RecipeDetailPage";
 import RecipesListPage from "../pages/RecipesListPage/RecipesListPage";
 import SignUpPage from "../pages/SignUpPage/SignUpPage";
-
+import Header from "../components/Header/Header";
 
 const Router = () => {
   return (
     <BrowserRouter>
+      <Header />
       <Switch>
-
-        <Route exact path="/login" >
+        <Route exact path="/login">
           <LoginPage />
         </Route>
 
         <Route exact path="/cadastro">
-          < SignUpPage/>
+          <SignUpPage />
         </Route>
 
         <Route exact path="/">
-          < RecipesListPage/>
+          <RecipesListPage />
         </Route>
 
         <Route exact path="/adicionar-receitas">
@@ -32,13 +32,12 @@ const Router = () => {
         </Route>
 
         <Route exact path="/detalhe/:id">
-          <RecipeDetailPage/>
+          <RecipeDetailPage />
         </Route>
 
-        <Route >
-          <ErrorPage/>
+        <Route>
+          <ErrorPage />
         </Route>
-
       </Switch>
     </BrowserRouter>
   );

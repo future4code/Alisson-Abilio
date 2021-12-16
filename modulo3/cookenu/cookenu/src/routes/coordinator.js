@@ -1,19 +1,18 @@
-export const goLogin = (history) => {
-    history.push ("/login")
+export const goToLogin = (history) => {
+  history.push("/login")
 }
 
-export const goSignUpPage = (history) => {
-    history.push ("/cadastro")
+export const goToSignUp = (history) => {
+  history.push("/cadastro")
 }
 
-export const goRecipesListPage = (history) => {
-    history.push ("/")
+export const goToAddRecipes = (history) => {
+  history.push("/adcionar-receitas")
 }
 
-export const goAddRecipesPage = (history) => {
-    history.push ("/adcionar-receitas")
-}
-
-export const goRecipeDetailPage = (history, id) => {
-    history.push (`/detalhes/${id}`)
+export const goToRecipeDetail = (history, id) => {
+  history.push(`/detalhes/${id}`)
+  }
+export const goToRecipesList = (history) => {
+  history.push("/")
 }
