@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import styled from "styled-components";
+
 
 const ContanerGeneral = styled.div`
 display: grid;
@@ -187,7 +187,7 @@ const url =`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/
   render(){
 
 
-     const mostrasPlayList = this.state.playList.map((item) =>
+     const mostrasPlayList = this.state.playList.map((item.name) =>
      {
         
          return(
