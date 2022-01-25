@@ -1,15 +1,19 @@
+
 import express from "express";
-import { AddressInfo } from "net";
+import { paula} from "./User";
+import cors from "cors"
 
 const app = express();
 
 app.use(express.json());
+app.use(cors())
 
-
-const server = app.listen( () => {
-   
-  });;
+app.listen(3003, () => console.log("é a porta  3003"))
   
-  app.get("", (req, res) =>{
-      res.send("")
+
+  app.get("/users", (req, res) =>{
+  
+      res.status(200).send(paula)
+    
+      
   })
