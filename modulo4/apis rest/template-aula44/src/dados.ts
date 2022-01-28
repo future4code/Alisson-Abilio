@@ -2,7 +2,7 @@ enum UserType {
     ADMIN = "ADMIN",
     NORMAL = "NORMAL"
 }
-export type User = {
+ export type User1 = {
     id: number,
     name: string,
     email: string,
@@ -11,7 +11,7 @@ export type User = {
   }
 
   
-  export let users: User[] = [
+  export let users: User1[] = [
     {
         id: 1,
         name: "Alice",

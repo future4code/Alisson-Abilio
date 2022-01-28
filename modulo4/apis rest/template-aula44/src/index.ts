@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express'
 import cors from 'cors'
-import { User, users } from './dados'
+import { User1, users } from './dados'
 
 
 const app = express()
@@ -22,22 +22,17 @@ app.get("/usuarios", (rep: Request, res: Response) => {
   }
 }
 )
-app.get("/usuario/:type", (req: Request, res: Request) => {
-  let codeError:number=400
+app.get("/usuario/:id", (req: Request, res: Response) => {
+  let errorCode: any = 400
+  try {
+ 
+    const result  = users.map((item) =>  item.id === Number(req.query.id))
 
-  try{
-    const user:string = req.query.type as string
-    const result: User | undefined = users.find((item) => item.type === user)
-    if(!result){
-      codeError =404
-      throw new Error('User not fond')
-    }
-    res.status(200).send(result)
 
-  }catch(error){
-    res.status(codeError).send({message: error.messge})
+    res.status(200).send({result});
+  } catch (error) {
+
+    console.log(error);
+    res.status(errorCode).send("erro");
   }
-  
-  
-  
 })
