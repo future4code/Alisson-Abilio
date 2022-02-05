@@ -36,7 +36,6 @@ app.post("/user", async (req: Request, res: Response): Promise <void> => {
     }
     catch (error: any) { res.status(500).send(error.Sqlmessage || error.message) }
 })
-
 app.get("/user/:id", async (req: Request, res: Response): Promise <void> => {
   
     try{
@@ -61,6 +60,38 @@ app.put("/user/edit/:id", async (req: Request, res: Response): Promise <void> =>
        `)
       res.status( 201).send("tudo certo!!!!!")
   }catch (error: any)
+    { res.status(500).send(error.Sqlmessage || error.message) }
+
+})
+
+app.post("/task", async (req: Request, res: Response): Promise <void> => {
+    try {
+          await connection.raw
+         (`INSERT INtO CREATE_TASKS
+        (  title, description, limitDate, status, creatorUserId )
+         values 
+         (
+        "${req.body.title}",
+        "${req.body.description}",
+        "${req.body.limitDate}",
+        "${req.body.status}",
+        "${req.body.creatorUserId}"
+         )
+         `)
+        res.status( 201).send("tudo certo!!!!!")
+    }
+    catch (error: any) { res.status(500).send(error.Sqlmessage || error.message) }
+})
+
+app.get("/task/:id", async (req: Request, res: Response): Promise <void> => {
+  
+    try{
+       const seeAll =  await connection.raw
+        (` select * from CREATE_TASKS where id =  ${req.params.id}`)
+
+        res.status(201).send(seeAll[0])
+        
+    }catch (error: any)
     { res.status(500).send(error.Sqlmessage || error.message) }
 
 })
