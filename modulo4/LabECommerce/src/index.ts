@@ -2,6 +2,7 @@ import express, { Express, Request, Response } from "express";
 import { connection } from "./Data/connection";
 import cors from "cors";
 import { AddressInfo } from "net";
+import { user } from "./Types/type";
 
 
 
@@ -34,9 +35,16 @@ app.get("/usersAll", async (req:Request, res:Response) =>{
 app.post("/users", async(req:Request, res:Response)=>{
     try{
         const result = await connection.raw
-        const {id, name, email, password, adm} = req.body
         (`insert into labecommerce_users value (
-            
+            "${req.body.id}",
+            "${req.body.name}",
+            "${req.body.email}",
+            "${req.body.password}",
+            "${req.body.adm}"  
         ); `)
+        res.status(200).send({result})
+    }
+    catch(error: any){
+        res.status(500).send(error.sqlMessage || error.message)
     }
 })
