@@ -96,7 +96,8 @@ app.post("/task",    async (req: Request, res: Response): Promise <void> => {
         "${req.body.status}",
         "${req.body.creatorUserId}"
          )
-         `)
+         `)  
+         
         res.status( 201).send("tudo certo!!!!!")
     }
     catch (error: any) { res.status(500).send(error.Sqlmessage || error.message) }

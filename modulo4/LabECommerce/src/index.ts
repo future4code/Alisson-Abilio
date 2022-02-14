@@ -55,7 +55,8 @@ app.get("/products", async (req: Request, res: Response) => {
     }
 })
 app.get("/users/:user_id/purchases", async (req: Request, res: Response)=>{
-    try{ await(``)
+    try{ await connection.raw
+        (``)
 
     }
     catch(error:any){
@@ -113,6 +114,24 @@ app.post("/creatAccounts", async (req: Request, res:Response)=>{
         res.status(201).send(result)
     }
     catch(error: any){
+        res.status(500).send(error.sqlMessage || error.message)
+    }
+})
+app.post("/purchases", async (req:Request, res:Response) =>{
+    try{
+        const total = (req.body.quantity)*3
+        const result = await connection.raw
+        (`insert into labecommerce_purchase value(
+           " ${req.body.user_id}",
+            "${req.body.product_id}",
+            "${req.body.quantity}",
+            "${total}"
+
+            ); `)
+            res.status(200).send({result: result})
+
+    }
+    catch(error:any){
         res.status(500).send(error.sqlMessage || error.message)
     }
 })
