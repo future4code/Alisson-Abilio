@@ -2,20 +2,40 @@ import styled from "styled-components"
 
 
 export const HeaderHome = styled.div`
-border: 1rem solid #058789;
-text-align: center;
-height: 10rem;
+display: grid;
+grid-template-rows: 1fr   ;
+grid-template-columns: 1fr  ;
+border: 5px solid green;
+margin: 5px;
 `
 export const BoxButton = styled.div`
-text-align: center;
-height: 3rem;
 display: flex;
-justify-content: space-between;
+border: 5px solid blue;
+
+
+
+
 `
 export const Cards = styled.div`
-text-align: center;
-height: 14rem;
-width: 10rem;
-border: 1rem solid black;
-
+  display:grid ;
+  grid-template-columns: 1fr 1fr 1fr 1fr ;
+  grid-row-gap: 10px;
+  grid-column-gap: 10px;
+  border: 5px solid black;
+  align-content: center;
+  margin: 3px;
+  
+  img {
+    border: 5px solid black;
+    align-content:center;
+    height: 25rem;
+    
+}
+`
+export const Body = styled.div`
+  /* display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  border: 3px solid black;
+  height: 1fr;
+  width: 1fr; */
 `
