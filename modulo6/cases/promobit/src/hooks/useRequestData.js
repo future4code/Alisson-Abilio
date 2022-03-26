@@ -9,11 +9,11 @@ const useRequestData = (inicial, url) => {
         axios.get(url)
         .then((res) => {
             setData(res.data.results)
-            console.log("aqui o res", res.data.results)
+            
         })
         .catch((err) => {
             console.log("aqui o erro", err)
-            alert("ocorreu um erro")
+           
         } )
 
     },[])

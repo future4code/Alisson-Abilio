@@ -1,20 +1,29 @@
-import { Button } from "@material-ui/core";
+
 import React from "react";
-import { goToHome, goToSelection } from "../../routes/coordinator"
 import { Body, BoxButton, Cards, HeaderHome } from "./styled";
-import { useHistory } from "react-router-dom"
 import useRequestData from "../../hooks/useRequestData";
-import { BASE_IMG, BASE_URL, LISTA_FILMES } from "../../constants/urls";
+import { BASE_IMG, LISTA_FILMES } from "../../constants/urls";
+import useRequestDatateste from "../../hooks/teste";
+import {LISTA_DETALHES} from "../../constants/urls"
+
+export function getId(item) { return console.log( item.overview ) }
 
 
 const Home = () => {
+
+    const detalhes = useRequestDatateste([], `${LISTA_DETALHES}`)
+    
+    
+    
     const list = useRequestData([], `${LISTA_FILMES}`)
-    const history = useHistory()
     
     const poster = list.map((item) => {
-        return <img src={`${BASE_IMG + item.poster_path}`} />
+        return <button onClick={()=>getId(item)}>
+            <img src={`${BASE_IMG + item.poster_path}`} />
+               </button>
     })
 
+ 
     const title = list.map((item) => {
         return <p>{item.title}</p>
     })
@@ -23,26 +32,25 @@ const Home = () => {
         return <p>{item.overview}</p>
     })
 
-    function showMessage(){   
-        return sinopse  
-      }
-
-      function hideMessage(){
-        return "fim"
-      }
-
+     const id = list.map((item) => {
+        return <p>{item.id}</p>
+    })
 
     return (
-
+        
         <div>
             <HeaderHome>
                 <Body>
                     <BoxButton>
-                        {title}
+                       {detalhes.genres && detalhes.genres.map((item)=>{
+                           return <p>{item.name}</p>
+                       })}
+
+                       
                     </BoxButton>
-                        <Cards>
-                            {poster}
-                        </Cards>
+                    <Cards>
+                        {poster}
+                    </Cards>
                 </Body>
             </HeaderHome>
         </div>

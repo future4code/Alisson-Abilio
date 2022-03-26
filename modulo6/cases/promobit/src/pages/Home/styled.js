@@ -21,15 +21,17 @@ export const Cards = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr ;
   grid-row-gap: 10px;
   grid-column-gap: 10px;
-  border: 5px solid black;
+  border: 5px solid purple;
   align-content: center;
   margin: 3px;
+  justify-items: center;
   
   img {
     border: 5px solid black;
     align-content:center;
     height: 25rem;
-    
+    box-shadow: 20px 20px 50px black;
+    border-radius: 15px;
 }
 `
 export const Body = styled.div`
