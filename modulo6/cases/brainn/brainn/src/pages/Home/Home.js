@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getLoteria } from "../../api/request";
 import { BoxRight, BoxLeft, ContainerInferior, CotainnerGenaral, NameCenter, ContainnerSelector } from "./styled";
 
-function getId(){return item.id}
+export function getId(item) { return console.log( item.id ) }
 
 export const Home = () => {
     const [loteria, setLoteria] = useState([])
