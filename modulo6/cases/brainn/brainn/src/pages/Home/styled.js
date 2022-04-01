@@ -1,77 +1,100 @@
+import mediaquery from "mediaquery";
 import styled from "styled-components";
+import React from 'react'
+import { useMediaQuery } from 'react-responsive'
 
-export function AlterarCor (cor) {
-    return {cor}  }
+export const lotoColor = {
 
+    megasena: 'rgba(107, 239, 163, 1)',
 
-export const test = styled.div`
-color: ${AlterarCor} ;
-` 
+    quina: 'rgba(134, 102, 239, 1)',
+
+    lotofacil: 'rgba(221, 122, 198, 1)',
+
+    lotomania: 'rgba(255, 171, 100, 1)',
+
+    timemania: 'rgba(90, 173, 125, 1)',
+
+    diadesorte: 'rgba(191, 175, 131, 1)',
+
+    textColor: 'rgba(225, 225, 255, 1)'
+
+}
+
+  const pegarCor =(cor)=>{
+
+    if(cor === 0 ){
+        return `background-color: ${lotoColor.megasena}`
+    }
+    if(cor === 1 ){
+        return `background-color: ${lotoColor.quina}`
+    }
+    if(cor === 2 ){
+        return `background-color: ${lotoColor.lotofacil}`
+    }
+    if(cor === 3 ){
+        return `background-color: ${lotoColor.lotomania}`
+    }
+    if(cor === 4 ){
+        return `background-color: ${lotoColor.timemania}`
+    }
+    if(cor === 5 ){
+        return `background-color: ${lotoColor.diadesorte}`
+    }
+
+}
+
 
 export const CotainnerGenaral = styled.div`
 display: grid;
-grid-template-rows: 1fr 4fr;
+grid-template-columns: repeat (auto-fit, minmax(25%, 1fr));
+grid-template-rows: 1fr;
 height: 100vh;
+${({cor}) => pegarCor(cor)}
+
 ` 
-export const BoxLeft = styled.div`
-display: grid;
+
+export const ContainnerResults = styled.div`
+display: flex;
+flex-wrap: wrap;
+flex-direction: column;
 align-items: center;
 justify-content: space-around;
-`
+height: 100vh;
+color: black;
+background-color: rgb(239, 239, 239);
+border-radius: 20% 0% 0% 20%;
 
-export const ContainerInferior = styled.div`
-display: grid;
-grid-template-columns: 1fr 3fr;
-align-items: center;
-justify-content: space-around;
-width: 100vw;
-`
-export const ContainnerSelector = styled.div`
-display: grid;
-grid-template-columns: 1fr 3fr;
-align-items: center;
-justify-items: center;
-width: 100vw;
-
-select {
-    display: grid;
-    align-items: center;
-    justify-items: center;
-    width: 12vw;
+.resultados-numeros {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 10rem;
 }
 `
-export const NameCenter = styled.div`
-    display: grid;
-    align-items: center;
-    justify-items:center;
-    width: 150px;
-    height: 50px;
-    border: solid black;
-    `
-export const NameDown = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 200px;
-    height: 20px;
-    border: solid black;
-    margin-top: 200px
-    `
-
-
-export const BoxRight = styled.div`
+export const BoxResult = styled.div`
 display: flex;
 align-items: center;
-justify-content: space-around;
+justify-content: center;
+margin: 1rem;
+height: 4rem;
+width: 4rem;
+border-radius: 50%;
+background-color:  white;
+`
+
+export const ContainnerSelect = styled.div`
+display: grid;
+color: white;
+font-weight: bold;
 align-content: space-between;
-p {
-    display: grid;
-    align-items: center;
-    justify-items: center;
-    height: 50px;
-    width: 50px;
-    border-radius: 50px;
-    border: solid black;
-    background-color:${AlterarCor()} ;
+justify-items: center;
+border-radius: 0% 200% 200% 0%;
+`
+export const BoxSelect = styled.div`
+margin: 1rem;
+select {
+    height: 2rem;
+    width: 10rem;
 }
 `
+
