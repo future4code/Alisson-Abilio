@@ -23,14 +23,3 @@ export const getLoteriaConcursos = (setData) => {
             alert(err.message)
         })
 }
-export const getLoteriaConcursosId = (setData) => {
-
-    axios.get(URL_BASE_CONCURSOSID)
-
-        .then((res) => {
-            setData(res.data)
-        })
-        .catch((err) => {
-            alert(err.message)
-        })
-}

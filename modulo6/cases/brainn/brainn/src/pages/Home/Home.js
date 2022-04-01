@@ -1,55 +1,92 @@
 import React, { useEffect, useState } from "react";
 import { getLoteria, getLoteriaConcursos, getLoteriaConcursosId } from "../../api/request";
-import { BoxRight, BoxLeft, ContainerInferior, CotainnerGenaral, NameCenter, ContainnerSelector } from "./styled";
-
-
+import { FUNCAO_URL_BASE_CONCURSOSID, URL_BASE_CONCURSOSID } from "../../constants/url";
+import { BoxRight, BoxLeft, ContainerInferior, CotainnerGenaral, NameCenter,
+ ContainnerSelector, NameDown, } from "./styled";
+import axios from "axios";
 
 
 export const Home = () => {
     const [loteria, setLoteria] = useState([])
-    const [loteriaConcuso, setLoteriaConcuso] = useState([])
-    const [loteriaConcursoId, setLoteriaConcusoId] = useState([])
-
+    const [loteriaConcuso, setLoteriaConcurso] = useState([])
+    const [loteriaConcursoId, setLoteriaConcursoId] = useState([])
     const [jogoAtual, set_JogoAtual] = useState({ id: 0, nome: "MEGA-SENA" })
+    
+    
+    
+    const concurso = loteriaConcuso && loteriaConcuso.map((item) => {
+        if (item.loteriaId === jogoAtual.id) {
+            return item.concursoId
+        }
+    })
+    const resultadoDoFiltro = concurso.filter((item) => {
+        return item
+    })
 
+    let resultadoFinal = resultadoDoFiltro.toString()
+
+
+    const getLoteriaConcursosId = (setData) => {
+
+        axios.get(FUNCAO_URL_BASE_CONCURSOSID(resultadoFinal))
+
+            .then((res) => {
+                setData(res.data)
+            })
+            .catch((err) => {
+                alert(err.message)
+            })
+    }
+
+
+
+    //CHAMAR AS REQUESIÇÕES
     useEffect(() => {
         getLoteria(setLoteria)
-        getLoteriaConcursos(setLoteriaConcuso)
-        getLoteriaConcursosId(setLoteriaConcusoId)
-    }, [])
+        getLoteriaConcursos(setLoteriaConcurso)
+        getLoteriaConcursosId(setLoteriaConcursoId)
+    }, [resultadoFinal])
 
-    const onChangeSelect = (e) => {
+
+
+
+
+
+    // PEGAR SELEÇÃO DO OPTION 
+    const pegarItemSelecionado = (e) => {
         loteria.filter((item) => {
             if (e.target.value === item.id.toString()) {
                 set_JogoAtual({ id: item.id, nome: item.nome.toUpperCase() })
             }
         })
+
     }
 
-    const result = loteria && loteria.map((item) => {
-        return <option key={item.id} value={item.id} >{
-            item.nome.toUpperCase()}</option>
+    //PERGAR O NOME E O ID DO JOGO ATUAL 
+    const result = loteria?.map((item) => {
+        return <option key={item.id} value={item.id}>{item.nome.toUpperCase()}</option>;
     })
 
-    const concurso = loteriaConcuso && loteriaConcuso.map((item) => {
-        if (item.loteriaId === jogoAtual.id) {
-            return item.loteriaId
 
-        }
-        
+    //PEGAR O RESULTADO DE CADA JOGO 
+    const numeroResult = loteriaConcursoId.numeros && loteriaConcursoId.numeros.map((item) => {
+        return <p> {item}</p>
     })
-    console.log("aqui id",concurso)
-    console.log("aqui tem id",loteriaConcursoId)
 
-    const concursoId = loteriaConcursoId && loteriaConcursoId.map((item) => {
-        if (item.loteria === concurso) {
-            return item.data
+    /// link
+
+    const numerox = loteriaConcursoId.numeros && loteriaConcursoId.numeros.map((item) => {
+        if (loteriaConcursoId.loteria === jogoAtual.id) {
+            return <p>{item}</p>
         }
     })
+
+
+
     return (
         <CotainnerGenaral>
             <ContainnerSelector>
-                <select onChange={onChangeSelect}  >
+                <select onChange={pegarItemSelecionado}  >
                     {result}
                 </select>
             </ContainnerSelector>
@@ -57,13 +94,13 @@ export const Home = () => {
                 <BoxLeft>
                     <NameCenter>
                         <p>{jogoAtual.nome}</p>
-                        <p>{concursoId}</p>
-                     
                     </NameCenter>
+                    <NameDown>
+                        <p>{loteriaConcursoId.data}</p>
+                    </NameDown>
                 </BoxLeft>
                 <BoxRight>
-                    <p>{concurso}</p>
-
+                    {numerox}
                 </BoxRight>
             </ContainerInferior>
         </CotainnerGenaral>

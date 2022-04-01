@@ -1,10 +1,17 @@
 import styled from "styled-components";
 
+export function AlterarCor (cor) {
+    return {cor}  }
+
+
+export const test = styled.div`
+color: ${AlterarCor} ;
+` 
+
 export const CotainnerGenaral = styled.div`
 display: grid;
 grid-template-rows: 1fr 4fr;
 height: 100vh;
-
 ` 
 export const BoxLeft = styled.div`
 display: grid;
@@ -41,13 +48,22 @@ export const NameCenter = styled.div`
     height: 50px;
     border: solid black;
     `
+export const NameDown = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 200px;
+    height: 20px;
+    border: solid black;
+    margin-top: 200px
+    `
 
 
 export const BoxRight = styled.div`
 display: flex;
 align-items: center;
 justify-content: space-around;
-
+align-content: space-between;
 p {
     display: grid;
     align-items: center;
@@ -56,5 +72,6 @@ p {
     width: 50px;
     border-radius: 50px;
     border: solid black;
+    background-color:${AlterarCor()} ;
 }
 `
