@@ -17,7 +17,8 @@ export const CriarCompeticao =async(req:Request, res:Response) =>{
                 "${unidade}"
                 )`
             ) 
-            res.status(201).send(resultado)
+            const ver = await connection.raw (`select * from Competicao_criar`)
+            res.status(201).send({ver: ver[0]})
 
         }catch(error : any){
         res.status(500).send(error.sqlmessage|| error.message)
@@ -25,16 +26,21 @@ export const CriarCompeticao =async(req:Request, res:Response) =>{
 
 }
 export const PegarCompetidores =async(req:Request, res:Response) =>{
-
+    const {unidade}  = req.params
     try{
-       
         const resultado = await connection.raw(
-            ` select * from Competicao_criar;`
+            
+            `SELECT  atleta, valor 
+            FROM   Competicao_criar
+            WHERE unidade = ${unidade}
+            ORDER BY valor ASC;
+             `
             ) 
+            
             res.status(201).send({resultado: resultado[0]})
-
+            
         }catch(error : any){
-        res.status(500).send(error.sqlmessage|| error.message)
+            res.status(500).send(error.sqlmessage|| error.message)
     }
 
 }

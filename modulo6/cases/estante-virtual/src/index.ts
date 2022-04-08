@@ -21,7 +21,7 @@ app.use(cors());
 
 
 app.post("/cadastro", CriarCompeticao)
-app.get("/resultado", PegarCompetidores)
+app.get("/resultado/:unidade", PegarCompetidores)
 
 
 
