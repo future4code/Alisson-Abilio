@@ -1,24 +1,16 @@
-// import { Competidor } from "../Types/types";
+import { CriarNovamente } from "../Endpoints/CriarCompeticao/CriarCompeticao";
+import { Competidor } from "../Types/types";
 
-// export class competidores extends Competidor {
+export class competidores {
    
     
-//     constructor(
-//         id: string,
-//         competicao: string,
-//         atleta: string,
-//         value: number,
-//         unidade: string,
-//     ) 
-//     {
-//         super(
-//         id,
-//         competicao,
-//         atleta,
-//         value,
-//         unidade
-//     }
+    constructor(
+       private criar: CriarNovamente
+    ) 
+    {
+        
+        
+    }
 
   
    
-// }

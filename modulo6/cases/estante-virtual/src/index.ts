@@ -1,7 +1,8 @@
-import { CriarCompeticao, PegarCompetidores } from "./Endpoints/CriarCompeticao/CriarCompeticao";
+import { CriarNovamente } from "./Endpoints/CriarCompeticao/CriarCompeticao";
 import { AddressInfo } from "net";
 import express, {Express} from 'express'
 import cors from 'cors'
+import { CadastroControler } from "./controler/cadastroControler";
 export const app: Express = express();
 
 app.use(express.json());
@@ -15,13 +16,11 @@ app.use(cors());
        console.error(`Failure upon starting server.`);
     }
 });
+const cadastro = new CadastroControler() 
 
 
-
-
-
-app.post("/cadastro", CriarCompeticao)
-app.get("/resultado/:unidade", PegarCompetidores)
+app.post("/cadastro", cadastro.CriarCompeticao)
+// app.get("/resultado/:unidade", PegarCompetidores)
 
 
 

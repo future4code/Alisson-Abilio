@@ -1,15 +1,14 @@
 import {  Request, Response } from "express";
-import { connection } from "../../Data/ConnectionData";
+import { ConnectionData } from "../../Data/ConnectionData";
 
 
+export class CriarNovamente extends ConnectionData {
 
-export const CriarCompeticao =async(req:Request, res:Response) =>{
-
-    try{
-        const { competicao, atleta, valor,unidade}  = req.body
-        const id = Date.now().toString()
-        const resultado = await connection.raw(
-            `insert into Competicao_criar values (
+  public  async CriarCompeticao  (id:string, competicao: string, atleta:string, valor:number, unidade:string ):Promise<any>{
+        
+        try{
+            const resultado = await this.getConnection().raw(
+                `insert into Competicao_criar values (
                 "${id}",
                " ${competicao}",
                " ${atleta}",
@@ -17,30 +16,30 @@ export const CriarCompeticao =async(req:Request, res:Response) =>{
                 "${unidade}"
                 )`
             ) 
-            const ver = await connection.raw (`select * from Competicao_criar`)
-            res.status(201).send({ver: ver[0]})
 
         }catch(error : any){
-        res.status(500).send(error.sqlmessage|| error.message)
+           console.log(error)
+        }
+        
     }
-
-}
-export const PegarCompetidores =async(req:Request, res:Response) =>{
-    const {unidade}  = req.params
-    try{
-        const resultado = await connection.raw(
+    
+    
+//    PegarCompetidores =async(req:Request, res:Response) =>{
+//     const {unidade}  = req.params
+//     try{
+//         const resultado = await this.getConnection().raw(
             
-            `SELECT  atleta, valor 
-            FROM   Competicao_criar
-            WHERE unidade = ${unidade}
-            ORDER BY valor ASC;
-             `
-            ) 
+//             `SELECT  atleta, valor 
+//             FROM   Competicao_criar
+//             WHERE unidade = ${unidade}
+//             ORDER BY valor ASC;
+//              `
+//             ) 
             
-            res.status(201).send({resultado: resultado[0]})
+//             res.status(201).send({resultado: resultado[0]})
             
-        }catch(error : any){
-            res.status(500).send(error.sqlmessage|| error.message)
-    }
+//         }catch(error : any){
+//             res.status(500).send(error.sqlmessage|| error.message)
+//     }
 
 }
