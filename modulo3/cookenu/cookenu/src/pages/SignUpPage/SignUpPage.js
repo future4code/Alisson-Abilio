@@ -1,14 +1,18 @@
-import React from "react";
-import {LogoImage, ScreenContainer, SignUpButtonContainer } from "./styled";
-import logo from "../../assets/logoin.jpg";
-import Button from "@material-ui/core/Button";
-import SignForm from "./SignForm"
-const LoginPage = () => {
+import React from 'react'
+import logo from '../../assets/logo.png'
+import { ScreenContainer } from './styled'
+import SignUpForm from "./SignUpForm"
+import { LogoImage } from './styled'
+import useUnprotectedPage from '../../hooks/useUnprotectedPage'
+
+const SignUpPage = ({setRightButtonText}) => {
+  useUnprotectedPage()
   return (
     <ScreenContainer>
-      <LogoImage src={logo} />
-      <SignForm/>
+      <LogoImage src={logo}/>
+      <SignUpForm setRightButtonText={setRightButtonText}/>
     </ScreenContainer>
-  );
-};
-export default LoginPage;
+  )
+}
+
+export default SignUpPage
