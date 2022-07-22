@@ -7,12 +7,13 @@ export const goToSignUp = (history) => {
 }
 
 export const goToAddRecipes = (history) => {
-  history.push("/adcionar-receitas")
+  history.push("/adicionar-receita")
 }
 
 export const goToRecipeDetail = (history, id) => {
-  history.push(`/detalhes/${id}`)
-  }
+  history.push(`/detalhe/${id}`)
+}
+
 export const goToRecipesList = (history) => {
   history.push("/")
 }
